@@ -1,0 +1,36 @@
+<div class="home-page">
+
+
+  <div class="container page">
+    <form>
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <input type="text" class="input" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of PSfilteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+
+
+        </div>
+        <div class="col-ms-6">
+
+          <input type="text" class="input"  matInput [formControl]="myControl2"
+                 [matAutocomplete]="auto2">
+          <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of PSfilteredOptions | async" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+
+
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+</div>

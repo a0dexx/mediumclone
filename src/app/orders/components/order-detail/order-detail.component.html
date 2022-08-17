@@ -1,0 +1,26 @@
+<p>order-detail works!</p>
+<div class="home-page">
+
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-12">
+
+
+        <div *ngIf="selectedOrder$|async">
+
+          <!--    </div>-->
+          <div class="row">
+
+            <div class="col-md-3">  {{selectedOrder$|async|json}}</div>
+<!--                          <div class="col-md-3">  {{selectedOrder$?.name}}</div>-->
+<!--                          <div class="col-md-3">  {{order.parent_stream}}</div>-->
+<!--                          <div class="col-md-3">  {{order.work_stream}}</div>-->
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<p>order-detail works!</p>
+<div class="home-page">
+
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-12">
+
+
+<!--        <form class="example-form">-->
+<!--          <mat-form-field class="example-full-width">-->
+<!--            <input type="text"-->
+<!--                   placeholder="Pick one"-->
+<!--                   aria-label="Number"-->
+<!--                   matInput-->
+<!--                   [formControl]="myControl"-->
+<!--                   [matAutocomplete]="auto">-->
+<!--            <mat-autocomplete #auto="matAutocomplete">-->
+<!--              <mat-option *ngFor="let option of filteredOptions | async" [value]="option">-->
+<!--                {{option}}-->
+<!--              </mat-option>-->
+<!--            </mat-autocomplete>-->
+<!--          </mat-form-field>-->
+<!--        </form>-->
+
+        <form class="example-form">
+          <input type="text" class="input" matInput [formControl]="myControl" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+              {{option.address}}
+            </mat-option>
+          </mat-autocomplete>
+        </form>
+
+
+
+
+
+
+        <div class="d-inline-block">
+          <button type="button" (click)="filterByParent('ps1')" class="btn btn-outline-primary">PS1</button>
+          <button type="button" (click)="filterByParent('ps2')" class="btn btn-outline-primary">PS2</button>
+          <button type="button" (click)="filterByParent('ps3')" class="btn btn-outline-primary">PS3</button>
+          <button type="button" (click)="filterByParent('ps4')" class="btn btn-outline-primary">PS4</button>
+          <button type="button" (click)="filterByParent('ps5')" class="btn btn-outline-primary">PS5</button>
+
+        </div>
+
+
+
+
+
+
+
+<!--        <div *ngIf="filteredJson|async">-->
+<!--          <div class="article-preview" *ngFor="let order of (filteredJson|async)">-->
+<!--            &lt;!&ndash;    <div class="article-meta">&ndash;&gt;-->
+<!--            &lt;!&ndash;      <a [routerLink]="['/profiles',article.author.username]">&ndash;&gt;-->
+<!--            &lt;!&ndash;        <img [src]="article.author.image" alt="">&ndash;&gt;-->
+<!--            &lt;!&ndash;      </a>&ndash;&gt;-->
+<!--            &lt;!&ndash;    </div>&ndash;&gt;-->
+<!--            <div class="row">-->
+
+<!--              <div class="col-md-3">  {{order.id}}</div>-->
+<!--              <div class="col-md-3">  {{order.first_name}}</div>-->
+<!--              <div class="col-md-3">  {{order.parent_stream}}</div>-->
+<!--              <div class="col-md-3">  {{order.work_stream}}</div>-->
+
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>

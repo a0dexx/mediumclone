@@ -1,0 +1,53 @@
+<div *ngIf="orders$|async">{{(orders$|async)|json}}</div>
+
+
+<div class="home-page">
+
+  <div class="container page">
+
+
+    <div *ngIf="orders$|async">
+      <div class="article-preview" *ngFor="let order of (orders$|async)">
+        <!--    <div class="article-meta">-->
+        <!--      <a [routerLink]="['/profiles',article.author.username]">-->
+        <!--        <img [src]="article.author.image" alt="">-->
+        <!--      </a>-->
+        <!--    </div>-->
+        <!--          <div class="info">-->
+        <div class="row">
+          <div class="col-md-4">
+            <a [routerLink]="['/order',order.id]">
+
+              {{order.id}}
+            </a></div>
+          <div class="col-md-4">
+            <a [routerLink]="['/order',order.id]">
+
+              {{order.name}}
+            </a></div>
+          <div class="col-md-4">
+            <div class="pull-xs-right" >
+              <i class="ion-gear-a"></i>
+              <button (click)="delete(order.id)">Delete</button>
+            </div>
+          </div>
+
+          <!--      <span class="date">{{article.createdAt}}</span>-->
+          <!--      <div class="pull-xs-right">-->
+          <!--        ADD TO FAVORITES-->
+          <!--      </div>-->
+          <!--    </div>-->
+          <!--    <a [routerLink]="['/articles',article.slug]" class="preview-link">-->
+          <!--      <h1>{{article.title}}</h1>-->
+          <!--      <h1>{{article.description}}</h1>-->
+          <!--      <span>Read more..</span>-->
+          <!--      HERE LIST OF TAGES-->
+          <!--    </a>-->
+          <!--          </div>-->
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
