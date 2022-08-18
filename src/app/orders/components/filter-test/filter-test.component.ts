@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { groupBy, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -14,8 +14,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FilterTestComponent implements OnInit {
   options!: Array<any>;
-  myControl = new FormControl();
-  myControl2 = new FormControl();
+  PScontrol = new FormControl();
+  WScontrol = new FormControl();
 
   PSoptions!: Array<any>;
   WSoptions!: Array<any>;
@@ -23,30 +23,38 @@ export class FilterTestComponent implements OnInit {
   PSfilteredOptions!: Observable<any[]>;
   WSfilteredOptions!: Observable<any[]>;
 
+
+  @Input() workStreamData:any;
+
+
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
 
-    this.myControl2.disable();
+
+    console.log('the data', this.workStreamData);
+
+
+    this.WScontrol.disable();
     this.http.get<any>('assets/MOCK_FILTER.json').subscribe((res) => {
       // this.options = res;
 
-      this.myControl.valueChanges.subscribe((value) => {
+      this.PScontrol.valueChanges.subscribe((value) => {
         console.log('whats the val', value);
 
         if(value){
-          this.myControl2.enable();
+          this.WScontrol.enable();
           console.log('value is there')
 
 
 
-          this.PSfilteredOptions = this.myControl2.valueChanges.pipe(
+          this.PSfilteredOptions = this.WScontrol.valueChanges.pipe(
             startWith(''),
             map((value) =>
               typeof value === 'string' ? value : value.parent_stream
             ),
             map((parent_stream) =>
-              parent_stream ? this._filter(parent_stream) : this.PSoptions.slice()
+              parent_stream ? this._filter(this.PSoptions,parent_stream) : this.PSoptions.slice()
             )
             // groupBy(value => value.parent_stream)
           );
@@ -55,26 +63,26 @@ export class FilterTestComponent implements OnInit {
         }else {
           console.log('should be empty')
 
-          this.myControl2.setValue('');
-          this.myControl2.disable();
+          this.WScontrol.setValue('');
+          this.WScontrol.disable();
         }
       });
 
 
-      this.myControl2.valueChanges.subscribe((value) => {
+      this.WScontrol.valueChanges.subscribe((value) => {
         console.log('whats the val 2', value);
       });
 
 
       this.PSoptions = this.getParentStreamValues(res);
 
-      this.PSfilteredOptions = this.myControl.valueChanges.pipe(
+      this.PSfilteredOptions = this.PScontrol.valueChanges.pipe(
         startWith(''),
         map((value) =>
           typeof value === 'string' ? value : value.parent_stream
         ),
         map((parent_stream) =>
-          parent_stream ? this._filter(parent_stream) : this.PSoptions.slice()
+          parent_stream ? this._filter(this.PSoptions,parent_stream) : this.PSoptions.slice()
         )
         // groupBy(value => value.parent_stream)
       );
@@ -103,9 +111,9 @@ export class FilterTestComponent implements OnInit {
 
   getWorkStreamValues() {}
 
-  private _filter(value: string) {
+  private _filter(options:any,value: string) {
     console.log('filtering?');
-    return this.PSoptions.filter((option) =>
+    return this.options.filter((option) =>
       option.toLowerCase().includes(value.toLowerCase())
     );
   }
@@ -115,6 +123,6 @@ export class FilterTestComponent implements OnInit {
   }
 
   update() {
-    console.log(this.myControl.value.id);
+    console.log(this.PScontrol.value.id);
   }
 }
