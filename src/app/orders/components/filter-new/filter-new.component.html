@@ -1,6 +1,6 @@
 <div class="home-page">
 
-{{workingData|async}}
+  {{workingData|async}}
   <div class="container page">
     <form>
       <div class="row">
@@ -16,18 +16,18 @@
 
 
         </div>
-        <div class="col-ms-6">
+<!--        <div class="col-ms-6">-->
 
-          <input type="text" class="input"  matInput [formControl]="WScontrol"
-                 [matAutocomplete]="auto2">
-          <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
-            <mat-option *ngFor="let option of PSfilteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
+<!--          <input type="text" class="input"  matInput [formControl]="WScontrol"-->
+<!--                 [matAutocomplete]="auto2">-->
+<!--          <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">-->
+<!--            <mat-option *ngFor="let option of PSfilteredOptions | async" [value]="option">-->
+<!--              {{option}}-->
+<!--            </mat-option>-->
+<!--          </mat-autocomplete>-->
 
 
-        </div>
+<!--        </div>-->
 
       </div>
     </form>

@@ -14,9 +14,10 @@ import { OrderAddComponent } from './components/order-add/order-add.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
-import { AwsComponent } from './components/awsOLD/aws.component';
+import { AwsComponent } from './components/aws/aws.component';
 import { WordsComponent } from './components/words/words.component';
 import { FilterTestComponent } from './components/filter-test/filter-test.component';
+import { FilterNewComponent } from './components/filter-new/filter-new.component';
 
 
 const routes = [
@@ -39,6 +40,7 @@ const routes = [
     AwsComponent,
     WordsComponent,
     FilterTestComponent,
+    FilterNewComponent,
   ],
   imports: [
     CommonModule,

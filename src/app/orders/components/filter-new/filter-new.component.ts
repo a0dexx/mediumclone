@@ -1,18 +1,19 @@
+
+
+
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {groupBy, Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 
-/**
- * @title Filter autocomplete
- */
+
 @Component({
-  selector: 'app-filter-test',
-  templateUrl: './filter-test.component.html',
-  styleUrls: ['./filter-test.component.scss'],
+  selector: 'app-filter-new',
+  templateUrl: './filter-new.component.html',
+  styleUrls: ['./filter-new.component.scss']
 })
-export class FilterTestComponent implements OnInit {
+export class FilterNewComponent implements OnInit {
   options!: Array<any>;
   PScontrol = new FormControl();
   WScontrol = new FormControl();
@@ -42,12 +43,12 @@ export class FilterTestComponent implements OnInit {
   }
 
   processData(wsData:any){
-       console.log('the data input to componete', wsData);
+    console.log('the data input to componete', wsData);
 
     console.log(wsData)
-       // wsData.subscribe((data:any) =>{
-       //   console.log('data',data)
-       // })
+    // wsData.subscribe((data:any) =>{
+    //   console.log('data',data)
+    // })
 
 
     this.PScontrol.valueChanges.subscribe((value) => {

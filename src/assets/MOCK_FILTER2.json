@@ -1,12 +1,12 @@
 [
   {
-    "tree": [
+    "parentWorkstreams": [
       {
-        "parentWorkstreamId": 0,
+        "id": 0,
         "name": "parentStream 0",
         "workstreams": [
           {
-            "workstream_id": 0,
+            "id": 0,
             "name": "workStream 0",
             "changeTypes": [
               {
@@ -20,7 +20,7 @@
             ]
           },
           {
-            "workstream_id": 1,
+            "id": 1,
             "name": "workStream 1",
             "changeTypes": [
               {
@@ -34,7 +34,7 @@
             ]
           },
           {
-            "workstream_id": 2,
+            "id": 2,
             "name": "workStream 2",
             "changeTypes": [
               {
@@ -50,11 +50,11 @@
         ]
       },
       {
-        "parentWorkstreamId": 1,
+        "id": 1,
         "name": "parentStream 1",
         "workstreams": [
           {
-            "workstream_id": 3,
+            "id": 3,
             "name": "workStream 3",
             "changeTypes": [
               {
@@ -68,7 +68,7 @@
             ]
           },
           {
-            "workstream_id": 4,
+            "id": 4,
             "name": "workStream 4",
             "changeTypes": [
               {
@@ -82,7 +82,7 @@
             ]
           },
           {
-            "workstream_id": 5,
+            "id": 5,
             "name": "workStream 5",
             "changeTypes": [
               {
@@ -98,11 +98,11 @@
         ]
       },
       {
-        "parentWorkstreamId": 2,
+        "id": 2,
         "name": "parentStream 2",
         "workstreams": [
           {
-            "workstream_id": 6,
+            "id": 6,
             "name": "workStream 6",
             "changeTypes": [
               {
@@ -116,7 +116,7 @@
             ]
           },
           {
-            "workstream_id": 7,
+            "id": 7,
             "name": "workStream 7",
             "changeTypes": [
               {
@@ -130,7 +130,7 @@
             ]
           },
           {
-            "workstream_id": 8,
+            "id": 8,
             "name": "workStream 8",
             "changeTypes": [
               {
@@ -143,15 +143,14 @@
               }
             ]
           }
-
         ]
       },
       {
-        "parentWorkstreamId": 3,
+        "id": 3,
         "name": "parentStream 3",
         "workstreams": [
           {
-            "workstream_id": 9,
+            "id": 9,
             "name": "workStream 9",
             "changeTypes": [
               {
@@ -165,7 +164,7 @@
             ]
           },
           {
-            "workstream_id": 10,
+            "id": 10,
             "name": "workStream 10",
             "changeTypes": [
               {
@@ -179,7 +178,7 @@
             ]
           },
           {
-            "workstream_id": 11,
+            "id": 11,
             "name": "workStream 11",
             "changeTypes": [
               {
@@ -192,14 +191,14 @@
               }
             ]
           }
-
         ]
-      },      {
-        "parentWorkstreamId": 4,
+      },
+      {
+        "id": 4,
         "name": "parentStream 4",
         "workstreams": [
           {
-            "workstream_id": 12,
+            "id": 12,
             "name": "workStream 12",
             "changeTypes": [
               {
@@ -213,7 +212,7 @@
             ]
           },
           {
-            "workstream_id": 13,
+            "id": 13,
             "name": "workStream 13",
             "changeTypes": [
               {
@@ -227,7 +226,7 @@
             ]
           },
           {
-            "workstream_id": 14,
+            "id": 14,
             "name": "workStream 14",
             "changeTypes": [
               {
@@ -240,16 +239,15 @@
               }
             ]
           }
-
         ]
       },
       {
-        "parentWorkstreamId": 5,
+        "id": 5,
         "name": "parentStream 5",
         "workstreams": [
           {
-            "workstream_id": 15,
-            "name": "workStream 15,
+            "id": 15,
+            "name": "workStream 15",
             "changeTypes": [
               {
                 "name": "Add Lane + Sort",
@@ -262,7 +260,7 @@
             ]
           },
           {
-            "workstream_id": 16,
+            "id": 16,
             "name": "workStream 16",
             "changeTypes": [
               {
@@ -276,7 +274,7 @@
             ]
           },
           {
-            "workstream_id": 17,
+            "id": 17,
             "name": "workStream 17",
             "changeTypes": [
               {
@@ -289,10 +287,8 @@
               }
             ]
           }
-
         ]
       }
-
     ]
   }
 ]

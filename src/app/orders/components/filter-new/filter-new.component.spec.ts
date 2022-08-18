@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AwsComponent } from './aws.component';
+import { FilterNewComponent } from './filter-new.component';
 
-describe('AwsComponent', () => {
-  let component: AwsComponent;
-  let fixture: ComponentFixture<AwsComponent>;
+describe('FilterNewComponent', () => {
+  let component: FilterNewComponent;
+  let fixture: ComponentFixture<FilterNewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AwsComponent ]
+      declarations: [ FilterNewComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AwsComponent);
+    fixture = TestBed.createComponent(FilterNewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
