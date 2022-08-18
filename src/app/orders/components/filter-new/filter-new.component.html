@@ -10,27 +10,28 @@
           <input type="text" class="input" matInput [formControl]="PScontrol" [matAutocomplete]="auto">
           <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngFor="let option of PSfilteredOptions | async" [value]="option">
-              {{option}}
+              {{option.name}}
             </mat-option>
           </mat-autocomplete>
 
 
         </div>
-<!--        <div class="col-ms-6">-->
-
-<!--          <input type="text" class="input"  matInput [formControl]="WScontrol"-->
-<!--                 [matAutocomplete]="auto2">-->
-<!--          <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">-->
-<!--            <mat-option *ngFor="let option of PSfilteredOptions | async" [value]="option">-->
-<!--              {{option}}-->
-<!--            </mat-option>-->
-<!--          </mat-autocomplete>-->
 
 
-<!--        </div>-->
+        <div class="col-ms-6">
+
+          <input type="text" class="input" matInput [formControl]="WScontrol" [matAutocomplete]="auto2">
+          <mat-autocomplete #auto2="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of WSfilteredOptions | async" [value]="option">
+              {{option.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </div>
 
       </div>
     </form>
+
+    <button (click)="update()">submit</button>
 
   </div>
 </div>

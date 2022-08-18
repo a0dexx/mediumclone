@@ -1,12 +1,8 @@
-
-
-
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {groupBy, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
-
 
 @Component({
   selector: 'app-filter-new',
@@ -27,141 +23,74 @@ export class FilterNewComponent implements OnInit {
 
   @Input() workStreamData!: any;
 
-  workingData:any;
+  workingData: any;
 
   constructor(private http: HttpClient) {
   }
+
   ngOnInit() {
-
-
-    //this.workStreamData.pipe((data:any) => this.workingData = data);
-
-    this.processData(this.workStreamData)
-    //this.WScontrol.disable();
-
-
+    this.processData()
   }
 
-  processData(wsData:any){
-    console.log('the data input to componete', wsData);
+  processData() {
 
-    console.log(wsData)
-    // wsData.subscribe((data:any) =>{
-    //   console.log('data',data)
-    // })
+    console.log('data coming in to filter component', this.workStreamData)
 
 
-    this.PScontrol.valueChanges.subscribe((value) => {
-      console.log('whats the val', value);
-
-      if (value) {
+    this.WScontrol.disable();
+    this.PScontrol.valueChanges.subscribe((value: any) => {
+      console.log('selected value', value);
+      console.log('selected value workstreams', value.workstreams);
+      if (value.workstreams) {
+        this.WSoptions = value.workstreams;
         this.WScontrol.enable();
-        console.log('value is there')
-        this.PSfilteredOptions = this.WScontrol.valueChanges.pipe(
+        this.WSfilteredOptions = this.WScontrol.valueChanges.pipe(
           startWith(''),
           map((value) =>
-            typeof value === 'string' ? value : value.parent_stream
+            typeof value === 'string' ? value : value.name
           ),
-          map((parent_stream) =>
-            parent_stream ? this._PSfilter( parent_stream) : this.workStreamData.slice()
+          map((name) =>
+            name ? this._PSfilter(name) : this.WSoptions.slice()
           )
-          // groupBy(value => value.parent_stream)
         );
       } else {
         console.log('should be empty')
         this.WScontrol.setValue('');
         this.WScontrol.disable();
       }
-    });
+    })
+
+
+    this.PSfilteredOptions = this.PScontrol.valueChanges.pipe(
+      startWith(''),
+      map((value) =>
+        typeof value === 'string' ? value : value.name
+      ),
+      map((name) =>
+        name ? this._PSfilter(name) : this.workStreamData.slice()
+      )
+      // groupBy(value => value.parent_stream)
+    )
 
 
   }
 
 
-  ngOnInitOLD() {
-    console.log('the data input to componete', this.workStreamData);
-    this.WScontrol.disable();
-    this.http.get<any>('assets/MOCK_FILTER.json').subscribe((res) => {
-      // this.options = res;
-      this.PScontrol.valueChanges.subscribe((value) => {
-        console.log('whats the val', value);
-
-        if (value) {
-          this.WScontrol.enable();
-          console.log('value is there')
-          this.PSfilteredOptions = this.WScontrol.valueChanges.pipe(
-            startWith(''),
-            map((value) =>
-              typeof value === 'string' ? value : value.parent_stream
-            ),
-            map((parent_stream) =>
-              parent_stream ? this._filter(this.PSoptions,parent_stream) : this.PSoptions.slice()
-            )
-            // groupBy(value => value.parent_stream)
-          );
-        } else {
-          console.log('should be empty')
-          this.WScontrol.setValue('');
-          this.WScontrol.disable();
-        }
-      });
-
-      this.WScontrol.valueChanges.subscribe((value) => {
-        console.log('whats the val 2', value);
-      });
-      this.PSoptions = this.getParentStreamValues(res);
-      this.PSfilteredOptions = this.PScontrol.valueChanges.pipe(
-        startWith(''),
-        map((value) =>
-          typeof value === 'string' ? value : value.parent_stream
-        ),
-        map((parent_stream) =>
-          parent_stream ? this._filter(this.PSoptions, parent_stream) : this.PSoptions.slice()
-        )
-        // groupBy(value => value.parent_stream)
-      );
-    });
-  }
-
-  getParentStreamValues(data: any) {
-    console.log('original data', data);
-
-    const psValues: Array<any> = [];
-
-    data.forEach((item: any) => {
-      if (!psValues.includes(item.parent_stream)) {
-        psValues.push(item.parent_stream);
-      }
-    });
-
-    console.log('modified data', psValues);
-
-    return psValues;
-  }
-
-  getWorkStreamValues() {
-  }
-
-  private _filter(options: any, value: string) {
+  private _PSfilter(name: string) {
     console.log('filtering?');
-    return this.options.filter((option) =>
-      option.toLowerCase().includes(value.toLowerCase())
-    );
-  }
-
-  private _PSfilter( value: string) {
-    console.log('filtering?');
-    return this.workStreamData.filter((option:any) =>
-      option.name.toLowerCase().includes(value.toLowerCase())
+    return this.workStreamData.filter((option: any) =>
+      option.name.toLowerCase().includes(name.toLowerCase())
     );
   }
 
 
-  displayFn(selectedoption: any) {
-    return selectedoption ? selectedoption : undefined;
+  displayFn(parentWorkstream: any) {
+    console.log('from display', parentWorkstream)
+
+    return parentWorkstream && parentWorkstream.name ? parentWorkstream.name : undefined;
   }
 
   update() {
-    console.log(this.PScontrol.value.id);
+    console.log(this.PScontrol.value);
   }
 }

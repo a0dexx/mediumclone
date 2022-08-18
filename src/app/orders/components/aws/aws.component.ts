@@ -52,25 +52,25 @@ export class AwsComponent implements OnInit {
   getWorkstreamData() {
       this.http.get('assets/MOCK_FILTER2.json').subscribe((data:any) => {
 
-      this.workstreamJSON = data[0];
+      this.workstreamJSON = data[0].parentWorkstreams;
       console.log('data from http', data);
       // return data;
     });
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    console.log('jsaon data', this.jsonDataResult);
-    // return this.jsonDataResult.parent_stream.filter((option:any) => option.toLowerCase().includes(filterValue));
-    return this.jsonDataResult.pipe(
-      map((data: any) => {
-        console.log('the data', data);
-        // return data.filter((r: any) =>
-        //   r.parent_stream == filterValue
-        // );
-      })
-    );
-  }
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
+  //   console.log('jsaon data', this.jsonDataResult);
+  //   // return this.jsonDataResult.parent_stream.filter((option:any) => option.toLowerCase().includes(filterValue));
+  //   return this.jsonDataResult.pipe(
+  //     map((data: any) => {
+  //       console.log('the data', data);
+  //       // return data.filter((r: any) =>
+  //       //   r.parent_stream == filterValue
+  //       // );
+  //     })
+  //   );
+  // }
 
   //
   // getDataForSelect() {
@@ -89,24 +89,24 @@ export class AwsComponent implements OnInit {
   //   });
   // }
 
-  getMockData() {
-    this.http.get('assets/MOCK_DATA.json').subscribe((res) => {
-      this.jsonDataResult = of(res);
-      this.filteredJson = this.jsonDataResult;
-
-      this.filteredOptions = this.myControl.valueChanges.pipe(
-        startWith(''),
-        map((value) => (typeof value === 'string' ? value : value.address)),
-        map((value) => this._filter(value))
-      );
-      console.log('--- result :: ', this.jsonDataResult);
-      console.log('--- filtered options :: ', this.filteredOptions);
-
-      this.filteredOptions.subscribe((val) => {
-        console.log('val', val);
-      });
-    });
-  }
+  // getMockData() {
+  //   this.http.get('assets/MOCK_DATA.json').subscribe((res) => {
+  //     this.jsonDataResult = of(res);
+  //     this.filteredJson = this.jsonDataResult;
+  //
+  //     this.filteredOptions = this.myControl.valueChanges.pipe(
+  //       startWith(''),
+  //       map((value) => (typeof value === 'string' ? value : value.address)),
+  //       map((value) => this._filter(value))
+  //     );
+  //     console.log('--- result :: ', this.jsonDataResult);
+  //     console.log('--- filtered options :: ', this.filteredOptions);
+  //
+  //     this.filteredOptions.subscribe((val) => {
+  //       console.log('val', val);
+  //     });
+  //   });
+  // }
 
   filterByParent(myfilter: string) {
     console.log('filterby', myfilter);
